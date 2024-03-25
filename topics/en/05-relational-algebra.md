@@ -38,7 +38,7 @@ To represent set theory visually we use the [Venn Diagram](https://medium.com/@l
     - **Inner Join:** Returns the tuples that have matching values in the join relations.
     - **Outer Join:** Returns matching tuples in addition to non-matching tuples in one or both of the join relations.
     - **Left Join:** Returns all tuples from the first join relation and the corresponding tuples from the second join relation.
-    **- Right Join:** Returns all tuples from the second join relation and the corresponding tuples from the first join relation.
-    - **Full join:** Returns all tuples from both join relations, combining matching ones and padding with null values when there is no match.
+    - **Right Join:** Returns all tuples from the second join relation and the corresponding tuples from the first join relation.
+    - **Full Join:** Returns all tuples from both join relations, combining matching ones and padding with null values when there is no match.
 
 We will cover more about joins in a next chapter!

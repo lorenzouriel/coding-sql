@@ -19,7 +19,8 @@ And Query, well, we basically query everything in a database.
 
 Well...
 
-![sql-meme](/topics/en/imgs/sql-meme.jpg)
+![meme-sql](/topics/imgs/00_databases/sql-meme.jpg)
+
 
 # Databases 
 A relational database **represents data in a structured manner, organized into tables consisting of rows and columns.**
@@ -45,6 +46,8 @@ Overall, the **tabular structure of a relational database, along with the relati
 This structure allows for easy querying, retrieval, and manipulation of data, making relational databases a popular choice.
 
 ***Databases -> Tables (Relationships) -> Columns -> Rows***
+
+![tables_and_columns](/topics/imgs/00_databases/tables_and_columns.png)
 
 ## RDBMS vs. SGBD
 **Relational Database Management System (RDBMS):**
