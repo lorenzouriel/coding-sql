@@ -1,5 +1,6 @@
 # SQL Subsets
 They are separated into subsets precisely to identify what we are dealing with.
+![subsets](/topics/imgs/06_subsets/subsets.png)
 
 For example, if we want to manipulate data, we use DML (Data Manipulation Language).
 
