@@ -127,16 +127,18 @@ Indeed, **INNER JOIN is the most used in SQL queries.**
 
 Personally, **I tend to resort to LEFT and RIGHT JOINs when I'm delving deep into data analysis, often to examine the presence or absence of values, LEFT for data validation is gold, my friends!**
 
-**FULL JOIN**, on the other hand, is reserved for scenarios like the one described above – **instances where we need to correlate with a comprehensive timeline.** 
+**FULL JOIN**, on the other hand, is reserved for scenarios like the one described above – **instances where we need to correlate with a comprehensive timeline.** Or you can use **when analyzing data where some records may be missing in one dataset but present in another, to ensure that no data is lost during the join operation.**
 
-As for **CROSS JOIN**, it's not typically used, **just for specific purposes such as appending a signature to every row.**
+**CROSS JOIN** is useful **when you need to generate all possible combinations of data**, such as when creating test data for a database or when performing certain types of statistical analysis. Or you can **use in scenarios where you need to compare each item in one set with each item in another set.**
 
 
 ## Bonus: Union vs. Union All
 Both **UNION** and **UNION ALL** are used to **combine results from two or more queries into a single result list.** However, they have important differences in their behavior:
 
 ### UNION
-Combines the results of two or more queries into a single result list. **It automatically removes any duplicates that may arise between queries.**
+Combines the results of two or more queries into a single result list. 
+
+**It automatically removes any duplicates that may arise between queries.**
 
 It's useful when you want to **combine results from multiple queries and ensure there are no duplicates in the final results.**
 
@@ -159,7 +161,9 @@ FROM [tracking_habits].[dbo].[old_habits]
 - ![union](/topics/imgs/07-joins/union.png)
 
 ### UNION ALL
-Combines the **results of two or more queries into a single result list.** However, unlike UNION, it does not remove duplicates - **it simply combines all results, including duplicates if any.**
+Combines the **results of two or more queries into a single result list.** 
+
+However, unlike UNION, it does not remove duplicates - **it simply combines all results, including duplicates if any.**
 
 It is faster than UNION as it does not need to check and eliminate duplicates.
 

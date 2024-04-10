@@ -128,16 +128,17 @@ De fato, **INNER JOIN é o mais usado em consultas SQL.**
 
 Pessoalmente, **tendo a recorrer aos JOINs LEFT e RIGHT quando estou aprofundando a análise de dados, muitas vezes para examinar a presença ou ausência de valores, LEFT para validação de dados é ouro, meus amigos!**
 
-**FULL JOIN**, por outro lado, é reservado para cenários como o descrito acima - **instâncias em que precisamos correlacionar com uma linha do tempo abrangente.** 
+**FULL JOIN**, por outro lado, é reservado para cenários como o descrito acima – **instâncias em que precisamos correlacionar com uma timeline.** Ou você pode usar **ao analisar dados onde alguns registros podem estar ausente em um conjunto de dados, mas presente em outro, para garantir que nenhum dado seja perdido durante a operação de junção.**
 
-Quanto ao **CROSS JOIN**, ele não é normalmente usado, **apenas para fins específicos, como anexar uma assinatura a cada linha.**
-
+**CROSS JOIN** é útil **quando você precisa gerar todas as combinações possíveis de dados**, como ao criar dados de teste para um banco de dados ou ao realizar certos tipos de análise. Ou você pode **usar em cenários onde você precisa comparar cada item de um conjunto com cada item de outro conjunto.**
 
 ## Bônus: Union vs. Union All
 Tanto **UNION** quanto **UNION ALL** são usados para **combinar resultados de duas ou mais consultas em uma única lista de resultados.** No entanto, eles têm diferenças importantes em seu comportamento:
 
 ### UNION
-Combina os resultados de duas ou mais consultas em uma única lista de resultados. **Ele remove automaticamente quaisquer duplicatas que possam surgir entre as consultas.**
+Combina os resultados de duas ou mais consultas em uma única lista de resultados. 
+
+**Ele remove automaticamente quaisquer duplicatas que possam surgir entre as consultas.**
 
 É útil quando você deseja **combinar resultados de várias consultas e garantir que não haja duplicatas nos resultados finais.**
 
@@ -160,7 +161,9 @@ FROM [tracking_habits].[dbo].[old_habits]
 - ![union](/topics/imgs/07-joins/union.png)
 
 ### UNION ALL
-Combina os **resultados de duas ou mais consultas em uma única lista de resultados.** No entanto, ao contrário do UNION, ele não remove duplicatas - **simplesmente combina todos os resultados, incluindo duplicatas, se houver.**
+Combina os **resultados de duas ou mais consultas em uma única lista de resultados.** 
+
+No entanto, ao contrário do UNION, ele não remove duplicatas - **simplesmente combina todos os resultados, incluindo duplicatas, se houver.**
 
 É mais rápido que o UNION, pois não precisa verificar e eliminar duplicatas.
 
