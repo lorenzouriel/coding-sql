@@ -161,6 +161,7 @@ WHERE [name] = 'The SQL Week: SQL Subsets'
 -- More SQL statements here
 ROLLBACK TRANSACTION MySavepoint;
 ```
+
 ### What about the next steps?
 
 Save the content here, create a database example and go training. It is the best way to learn!
