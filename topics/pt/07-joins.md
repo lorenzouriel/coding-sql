@@ -127,7 +127,7 @@ CROSS JOIN **gera um conjunto de resultados com o número total de linhas igual 
 
 Pode ser útil para **gerar combinações de dados**, mas também pode **resultar em grandes conjuntos de resultados.**
 
-**Exemplo de CROSS JOIN:**
+**Exemplo:**
 ```sql
 SELECT 
 	*
@@ -157,7 +157,7 @@ A diferença do **CROSS** e do **FULL** é que com o **FULL** duplicamos apenas 
 
 Ou seja, se existem 366 registros na tabela `time` e apenas 03 registros na tabela `habits`, o SQL vai retornar 1.098 registro. No caso do **LEFT JOIN** utilizamos com o mesmo objetivo de identificar em qual data aquele hábito foi realizado.
 
-## Qual uso mais?
+## Qual usar mais?
 De fato, **INNER JOIN é o mais utilizado em consultas SQL.**
 
 Pessoalmente, **tendo a recorrer aos JOINs LEFT e RIGHT quando estou analisando as tabelas que possuo, muitas vezes para examinar a presença ou ausência de valores. Ou como mostrado nos exemplos acima, as vezes precisamos de um LEFT para buscar apenas os registros existentes, sem duplicar.**
@@ -168,10 +168,10 @@ Pessoalmente, **tendo a recorrer aos JOINs LEFT e RIGHT quando estou analisando 
 
 Vai muito da necessidade e do seu desafio!
 
-## Union vs. Union All
+## UNION vs. UNION ALL
 Tanto **UNION** quanto **UNION ALL** são usados para **combinar resultados de duas ou mais consultas em uma única lista de resultados.** No entanto, eles têm diferenças importantes em seu comportamento:
 
-- **Obs:** Criei uma tabela idêntica a minha `habits` e adicionei novos registros para fins de comparação.
+- ***Obs:** Criei uma tabela idêntica a minha `habits` e adicionei novos registros para fins de comparação.*
 
 ### UNION
 Combina os resultados de duas ou mais consultas em uma única lista de resultados. 
