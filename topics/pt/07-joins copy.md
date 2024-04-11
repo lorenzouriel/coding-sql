@@ -21,7 +21,7 @@ O conjunto de resultados contém apenas as linhas para as quais a condição de 
 
 Para **INNER JOIN você pode escrever apenas JOIN.**
 
-**Exemplo:**
+**Exemplo de INNER JOIN:**
 ```sql
 SELECT 
 	h.[name],
@@ -36,25 +36,25 @@ INNER JOIN habits h ON (t.[habit_id] = h.[id])
 **Resultado:**
 - ![inner_join](/topics/imgs/07-joins/inner_join.png)
 
-Nesse exemplo **estou realizando o join para identificar o nome e a descrição de cada hábito praticado nas datas.**
+Nesse exemplo **estou realizando o join para identificar o nome e a descrição de cada hábito praticada nas datas.**
 
 ## LEFT JOIN
 LEFT JOIN é **útil quando você deseja recuperar todos os registros da tabela esquerda, independentemente de existir ou não um registro correspondente na tabela da direita.**
 
 Se não houver correspondência na tabela da direita, valores NULL são retornados para as colunas da tabela da direita.
 
-**Exemplo:**
+**Exemplo de LEFT JOIN:**
 ```sql
 SELECT 
 	*
 FROM habits h
 LEFT JOIN contacts c ON (h.[contact_id] = c.[id])
 ```
+- ***Obs:** Para este exemplo, criei outra tabela semelhante a `habits` e adicionei mais duas linhas*
 
 **Resultado:**
 - ![left_join](/topics/imgs/07-joins/left_join.png)
 
-Podemos verificar que o contato de `id` 03 não existe na tabela de `contacts`, sendo assim, o retorno relacionado a essa linha será NULL.
 
 ## RIGHT JOIN
 É semelhante a um LEFT JOIN, mas **recupera todos os registros da tabela direita e os registros correspondentes da tabela esquerda.** 
@@ -63,18 +63,18 @@ Se não houver correspondência na tabela esquerda, valores NULL são retornados
 
 RIGHT JOIN é **menos comumente usado do que LEFT JOIN, mas pode ser útil em determinadas situações, especialmente quando você deseja se concentrar nos dados da tabela direita.**
 
-**Exemplo:**
+**Exemplo de RIGHT JOIN:**
 ```sql
 SELECT 
-	*
+     oh.[name], 
+     h.[name] 
 FROM habits h
-RIGHT JOIN contacts c ON (h.[contact_id] = c.[id])
+RIGHT JOIN old_habits oh ON (h.id = oh.[id])
 ```
 
 **Resultado:**
 - ![right_join](/topics/imgs/07-joins/right_join.png)
 
-Podemos verificar que o contato de `id` 04 não existe na tabela de `contacts`, só que ele não está relacionado a nenhum hábito, por isso, os retornos da tabela `habits` voltam como NULL.
 
 ## FULL JOIN 
 Recupera todos os registros **quando há uma correspondência na tabela esquerda ou direita.** 
@@ -83,7 +83,7 @@ Se não houver correspondência, **valores NULL são retornados para as colunas 
 
 FULL JOIN é útil quando você deseja **recuperar todos os registros de ambas as tabelas e ver onde eles correspondem ou não.**
 
-**Exemplo:**
+**Exemplo de FULL JOIN:**
 ```sql
 SELECT 
 	*
@@ -96,9 +96,9 @@ FULL JOIN time t ON (tr.[date] = t.[date])
 
 Aqui estou criando uma linha do tempo nesses dados, **consigo analisar todos os dias que um hábito foi realizado e os dias que não.**
 
-Nesse exemplo ele vai duplicar apenas a linha em que ocorreu um hábito, se três hábitos foram realizados no dia 02 então vão existir três linhas no dia 02. Isso é um **FULL JOIN**, você vai identificar as ocorrências em ambas as tabelas.
+Nesse exemplo ele vai duplicar apenas a linha em que ocorreu um hábito, se três hábitos foram realizados no dia 02 então vão existir três linhas no dia 02. Isso é um **FULL JOIN**, você vai identificar as ocorrências em ambas as tabelas
 
-**Exemplo completo:**
+**Outro exemplo de FULL JOIN pode ser:**
 ```sql
 SELECT 
 	h.[name],
@@ -114,9 +114,7 @@ LEFT JOIN [habits] h ON (h.[id] = tr.[habit_id])
 **Resultado:**
 - ![full_join_2](/topics/imgs/07-joins/full_join_2.png)
 
-Foi realizado um LEFT JOIN para buscar os campos da dimensão e ter uma query mais completa, ligando duas dimensões em uma fato. **Estamos analisando as informações de um timeline com as descrições da outra tabela de dimensão.**
-
-Já consegue tirar alguns insights?
+Foi realizado um LEFT JOIN para buscar os campos da dimensão e ter uma query mais completa, ligando duas dimensões em uma fato. Estamos analisando as informações de um timeline com as descrições da outra tabela de dimensão.
 
 ## CROSS JOIN
 Retorna o produto cartesiano das duas tabelas, **combinando cada linha da primeira tabela com cada linha da segunda tabela.**
@@ -140,7 +138,7 @@ CROSS JOIN contacts
 
 Vou trazer um exemplo parecido com o utilizado no FULL JOIN e vamos identificar as suas diferenças.
 
-**Exemplo completo:**
+**Exemplo de CROSS JOIN:**
 ```sql
 SELECT 
 	h.[name],
@@ -153,34 +151,32 @@ CROSS JOIN [time] t
 LEFT JOIN [tracking] tr ON (h.[id] = tr.[habit_id] and t.[date] = tr.[date])
 ```
 
-A diferença do **CROSS** e do **FULL** é que com o **FULL** duplicamos apenas as linhas que existem ocorrências, já o **CROSS** vai cruzar todas as linhas da tabela `time` com a tabela `habits`.
+A diferença do CROSS e do FULL é com o FULL duplica apenas as linhas que existem ocorrências, já o CROSS vai cruzar todas as linhas da tabela [time] com a tabela [habits].
 
-Ou seja, se existem 366 registros na tabela `time` e apenas 03 registros na tabela `habits`, o SQL vai retornar 1.098 registro. No caso do **LEFT JOIN** utilizamos com o mesmo objetivo de identificar em qual data aquele hábito foi realizado.
+Ou seja, se existem 366 registros na tabela [time] e apenas 03 registros na tabela [habits], o SQL vai retornar 1.098 registro. No caso do **LEFT JOIN** utilizamos com o mesmo objetivo de identificar em qual data aquele hábito foi realizado.
 
-## Qual uso mais?
-De fato, **INNER JOIN é o mais utilizado em consultas SQL.**
+---
+De fato, **INNER JOIN é o mais usado em consultas SQL.**
 
-Pessoalmente, **tendo a recorrer aos JOINs LEFT e RIGHT quando estou analisando as tabelas que possuo, muitas vezes para examinar a presença ou ausência de valores. Ou como mostrado nos exemplos acima, as vezes precisamos de um LEFT para buscar apenas os registros existentes, sem duplicar.**
+Pessoalmente, **tendo a recorrer aos JOINs LEFT e RIGHT quando estou aprofundando a análise de dados, muitas vezes para examinar a presença ou ausência de valores, LEFT para validação de dados é ouro, meus amigos!**
 
-**FULL JOIN**, por outro lado, é reservado para cenários como o descrito acima – **instâncias em que precisamos correlacionar com uma timeline.** Você também pode usar **ao analisar dados onde alguns registros podem estar ausente em um conjunto de dados, mas presente em outro, para garantir que nenhum dado seja perdido durante a operação de junção.**
+**FULL JOIN**, por outro lado, é reservado para cenários como o descrito acima – **instâncias em que precisamos correlacionar com uma timeline.** Ou você pode usar **ao analisar dados onde alguns registros podem estar ausente em um conjunto de dados, mas presente em outro, para garantir que nenhum dado seja perdido durante a operação de junção.**
 
-**CROSS JOIN** é útil **quando você precisa gerar todas as combinações possíveis de dados**, como ao criar dados de teste para um banco de dados ou ao realizar certos tipos de análise. Você também pode **usar em cenários onde você precisa comparar cada item de um conjunto com cada item de outro conjunto.**
+**CROSS JOIN** é útil **quando você precisa gerar todas as combinações possíveis de dados**, como ao criar dados de teste para um banco de dados ou ao realizar certos tipos de análise. Ou você pode **usar em cenários onde você precisa comparar cada item de um conjunto com cada item de outro conjunto.**
 
-Vai muito da necessidade e do seu desafio!
+---
 
-## Union vs. Union All
+## Bônus: Union vs. Union All
 Tanto **UNION** quanto **UNION ALL** são usados para **combinar resultados de duas ou mais consultas em uma única lista de resultados.** No entanto, eles têm diferenças importantes em seu comportamento:
-
-- **Obs:** Criei uma tabela idêntica a minha `habits` e adicionei novos registros para fins de comparação.
 
 ### UNION
 Combina os resultados de duas ou mais consultas em uma única lista de resultados. 
 
-**Ele remove automaticamente qualquer registro duplicado que possa surgir entre as consultas.**
+**Ele remove automaticamente quaisquer duplicatas que possam surgir entre as consultas.**
 
-É útil quando você deseja **combinar resultados de várias consultas e garantir que não haja registros duplicados nos resultados finais.**
+É útil quando você deseja **combinar resultados de várias consultas e garantir que não haja duplicatas nos resultados finais.**
 
-A ideia é gerar um conjunto de resultados único.
+Use **UNION** quando você deseja eliminar duplicatas e produzir um conjunto de resultados único.
 
 **Exemplo de UNION:**
 ```sql
@@ -201,11 +197,11 @@ FROM [tracking_habits].[dbo].[old_habits]
 ### UNION ALL
 Combina os **resultados de duas ou mais consultas em uma única lista de resultados.** 
 
-No entanto, ao contrário do UNION, ele não remove registros duplicados - **simplesmente combina todos os resultados, incluindo duplicados, se houver.**
+No entanto, ao contrário do UNION, ele não remove duplicatas - **simplesmente combina todos os resultados, incluindo duplicatas, se houver.**
 
-É mais rápido que o UNION, pois não precisa verificar e eliminar registros duplicados.
+É mais rápido que o UNION, pois não precisa verificar e eliminar duplicatas.
 
-Use **UNION ALL** quando você deseja combinar todos os resultados ou quando tem certeza de que não haverá registros duplicados e deseja melhorar o desempenho.
+Use **UNION ALL** quando você deseja combinar todos os resultados, incluindo duplicatas, ou quando tem certeza de que não haverá duplicatas e deseja melhor desempenho.
 
 **Exemplo de UNION ALL:**
 ```sql
