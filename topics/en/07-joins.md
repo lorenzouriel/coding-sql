@@ -182,6 +182,17 @@ It's useful when you want **to combine results from multiple queries and ensure 
 The idea is to generate a unique result set.
 
 **Example of UNION:**
+```sql
+SELECT 
+	*
+FROM [tracking_habits].[dbo].[habits]
+
+UNION
+
+SELECT 
+	*
+FROM [tracking_habits].[dbo].[old_habits]
+```
 
 **Result:**
 - ![union](/topics/imgs/07-joins/union.png)
@@ -196,6 +207,17 @@ It's faster than UNION because it doesn't need to check and eliminate duplicate 
 Use **UNION ALL** when you want to combine all results or when you're sure there won't be duplicate records and want to improve performance.
 
 **Example of UNION ALL:**
+```sql
+SELECT 
+	*
+FROM [tracking_habits].[dbo].[habits]
+
+UNION ALL
+
+SELECT 
+	*
+FROM [tracking_habits].[dbo].[old_habits]
+```
 
 **Result:**
 - ![union_all](/topics/imgs/07-joins/union_all.png)

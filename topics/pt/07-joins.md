@@ -219,6 +219,7 @@ SELECT
 	*
 FROM [tracking_habits].[dbo].[old_habits]
 ```
+
 **Resultado:**
 - ![union_all](/topics/imgs/07-joins/union_all.png)
 
