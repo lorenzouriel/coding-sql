@@ -153,6 +153,9 @@ CROSS JOIN [time] t
 LEFT JOIN [tracking] tr ON (h.[id] = tr.[habit_id] and t.[date] = tr.[date])
 ```
 
+**Resultado:**
+- ![cross_join_2](/topics/imgs/07-joins/cross_join_2.png)
+
 A diferença do **CROSS** e do **FULL** é que com o **FULL** duplicamos apenas as linhas que existem ocorrências, já o **CROSS** vai cruzar todas as linhas da tabela `time` com a tabela `habits`.
 
 Ou seja, se existem 366 registros na tabela `time` e apenas 03 registros na tabela `habits`, o SQL vai retornar 1.098 registro. No caso do **LEFT JOIN** utilizamos com o mesmo objetivo de identificar em qual data aquele hábito foi realizado.
