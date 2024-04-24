@@ -4,7 +4,7 @@ Documentar um banco de dados costuma ser uma tarefa cansativa e repetitiva.
 
 Quem já documentou, sabe. E quando muda algo no Schema, lá vamos nós atualizar a documentação ou o dicionário.
 
-Porém, eu queria ter visto esse post antes.
+Porém, eu queria ter visto esse capítulo antes.
 
 Hoje posso dizer que estou aqui para **documentar o seu banco de dados.**
 
@@ -15,6 +15,8 @@ Isso acaba hoje!
 Você vai fazer todo esse trabalho com apenas **dois comandos**
 
 E quando tiver que atualizar? Apenas um comando...
+
+Depois de acabar com a sua Task, você vai ficar me devendo um café.
 
 ## tbls - A ferramenta que vamos usar
 Existe uma ferramenta Open Source para esse tipo de tarefa, já está um tempo no mercado, tem uma **documentação bem extensa e uma comunidade ativa.**

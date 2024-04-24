@@ -1,4 +1,4 @@
-# Documenting your database
+# Documenting your Database
 Documenting a database is often a tiring and repetitive task.
 
 Anyone who has documented it knows. And when something changes in the Schema, we update the documentation or the dictionary.
@@ -14,6 +14,8 @@ This ends today!
 You will do all this work with just **two commands**
 
 And when do I have to update? Just one command...
+
+After finishing your Task, you'll owe me a coffee.
 
 ## tbls - The tool we will use
 There is an Open Source tool for this type of task, it has been on the market for a while, it has **very extensive documentation and an active community.**
