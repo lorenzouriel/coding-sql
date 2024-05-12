@@ -43,16 +43,16 @@ I will take into consideration a fact table related to an e-commerce.
 
 **Order lifecycle:**
 ```
-   Attribute Value
-   --------------------------------------
-   Order Placed 1
-   Payment in Processing 2
-   Identified Payment 4
-   Fast Delivery 8
-   Order Sent for Delivery 16
-   Order Delivered 32
-   Customer Feedback 64
-   Order Canceled 128
+Attribute                  Value
+--------------------------------------
+Order Placed                 1
+Payment in Processing        2
+Identified Payment           4
+Fast Delivery                8
+Order Sent for Delivery      16
+Order Delivered              32
+Customer Feedback            64
+Order Canceled               128
 ```
 
 This is an example of what some examples would look like using **Bitwise** to add the values:
