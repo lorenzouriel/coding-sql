@@ -1,4 +1,5 @@
 # Subconjuntos SQL
+
 Eles são separados em subconjuntos justamente para identificar com o que estamos lidando.
 ![subsets](/topics/imgs/06_subsets/subsets.png)
 
