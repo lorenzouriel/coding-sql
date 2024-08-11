@@ -20,6 +20,7 @@ Se você estiver interessado em participar deste esforço colaborativo, **sinta-
 |---|---|
 | [challenges](/challenges/) | Alguns desafios que enfrentei enquanto aprendia |
 | [execises](/exercises/) | Alguns exercícios que realizei enquanto aprendia |
+| [queries](/queries/) | Consultas e Scripts utilizados para realizar tarefas relacionados ao gerencimento |
 | [topics](/topics/) | Criei esta pasta a partir de algumas anotações que tinha no Evernote, Medium e cadernos. Imagine um ETL de bases de conhecimento em um só lugar. |
 
 - *Quer saber mais sobre cada pasta? Verifique o **README.md***
@@ -62,6 +63,7 @@ If you're interested in joining this collaborative effort, **feel free to fork t
 |---|---|
 | [challenges](/challenges/) | Some challenges that I faced while learning |
 | [execises](/exercises/) | Some exercises that I realized while learning |
+| [queries](/queries/) | Queries and Scripts used to perform management-related tasks |
 | [topics](/topics/) | I created this folder from some notes I had in Evernote, Medium and notebooks. Imagine an ETL of knowledge bases in one place. |
 
 - *Do you want to know more about each folder? Check the **README.md***
