@@ -1,0 +1,17 @@
+USE master
+GO
+CREATE LOGIN Teste123 WITH PASSWORD = 'Teste'
+GO
+
+USE AdventureWorks2019
+CREATE USER Teste123 FOR LOGIN Teste123
+GO
+
+CREATE ROLE RoleTeste
+GO
+
+GRANT SELECT ON SCHEMA :: HumanResources To RoleTeste
+GO
+
+ALTER ROLE RoleTeste ADD MEMBER Teste123
+GO
