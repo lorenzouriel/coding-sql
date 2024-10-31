@@ -1,7 +1,7 @@
 SELECT 
 	*
 FROM [dbo].[Catalog]
-WHERE [Path] like '%/Geotracker Reports%'
+WHERE [Path] like '%/Reports%'
 
 
 SELECT 
@@ -11,4 +11,4 @@ WHERE [ItemID] in (
 	SELECT 
 		[ItemID]
 	FROM [dbo].[Catalog]
-	WHERE [Path] like '%/Geotracker Reports%')
+	WHERE [Path] like '%/Reports%')
