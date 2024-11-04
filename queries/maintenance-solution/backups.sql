@@ -1,6 +1,6 @@
 -- Inicio da Semana 
 EXECUTE dbo.DatabaseBackup
-@Databases = 'geotracker.data', -- Seu Banco de Dados (USER_DATABASES faz backup de todos)
+@Databases = 'faturamento', -- Seu Banco de Dados (USER_DATABASES faz backup de todos)
 @Directory = 'C:\Backup', -- Diret�rio que quer salvar
 @BackupType = 'FULL', -- Tipo de Backup (FULL/DIFF/LOG)
 @Compress = 'Y', -- Realiza uma compressao (Reduz o tamanho do arquivo)
