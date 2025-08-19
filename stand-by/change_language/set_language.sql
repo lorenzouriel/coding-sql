@@ -1,3 +1,0 @@
-SET LANGUAGE 'us_english';  
-
-ALTER LOGIN [NT Service\MSSQLSERVER] WITH DEFAULT_LANGUAGE = us_english;

@@ -15,7 +15,6 @@ EXECUTE dbo.DatabaseBackup
 @ChangeBackupType = 'Y', -- Caso der erro mude o tipo de Backup (Quest�o de seguran�a)
 @CleanupMode = 'BEFORE_BACKUP' -- Apaga os Backups antigos para n�o encher � armazenamento
 
-
 -- A cada hora
 EXECUTE dbo.DatabaseBackup
 @Databases = 'waves', -- Seu Banco de Dados (USER_DATABASES faz backup de todos)
