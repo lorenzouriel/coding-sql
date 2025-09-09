@@ -4,22 +4,22 @@ services:
     container_name: mssql-prod
     restart: unless-stopped
     environment:
-      ACCEPT_EULA: "Y"
-      MSSQL_PID: "Standard"
-      SA_PASSWORD: "${MSSQL_SA_PASSWORD}"
-      MSSQL_AGENT_ENABLED: "true"
+      ACCEPT_EULA: "Y"               # Accept SQL Server license
+      MSSQL_PID: "Standard"          # SQL Server edition
+      SA_PASSWORD: "${SA_PASSWORD}"  # Password from environment variable
+      MSSQL_AGENT_ENABLED: "true"    # Enable SQL Server Agent
     ports:
-      - "14330:1433"
+      - "14330:1433"                 # Map host port 14330 to container 1433
     ulimits:
       nofile:
         soft: 65536
-        hard: 65536
+        hard: 65536        # Increase file descriptors for performance
     volumes:
-      - ./mnt/mssql-data/data:/var/opt/mssql/data
-      - ./mnt/mssql-data/logs:/var/opt/mssql/log
-      - ./mnt/mssql-data/backups:/var/opt/mssql/backups
+      - ./mnt/mssql-data/data:/var/opt/mssql/data        # Persistent database data
+      - ./mnt/mssql-data/logs:/var/opt/mssql/log         # Persistent logs
+      - ./mnt/mssql-data/backups:/var/opt/mssql/backups  # Persistent backups
     deploy:
       resources:
         limits:
-          memory: 8G
-          cpus: '4.0'
+          memory: 8G               # Limit container memory
+          cpus: '4.0'              # Limit container CPU usage
