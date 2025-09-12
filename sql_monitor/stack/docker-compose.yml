@@ -4,6 +4,7 @@ services:
     container_name: grafana
     ports:
       - "3000:3000"
+    env_file: .env
     volumes:
       - grafana_data:/var/lib/grafana
       - ./grafana/grafana.ini:/etc/grafana/grafana.ini

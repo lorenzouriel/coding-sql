@@ -14,7 +14,7 @@ datasources:
     type: mssql
     uid: sqlserver_ds    
     access: proxy
-    url: ${DB_HOST}:${DB_PORT}
+    url: ${DB_HOST}
     user: ${DB_USER}
     secureJsonData:
       password: ${DB_PASSWORD}
