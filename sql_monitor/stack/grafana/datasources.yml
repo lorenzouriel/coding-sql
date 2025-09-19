@@ -10,7 +10,7 @@ datasources:
     version: 1
     editable: false
 
-  - name: SQLServer
+  - name: ${DS_MSSQL}
     type: mssql
     uid: sqlserver_ds    
     access: proxy

@@ -82,7 +82,7 @@
     {
       "datasource": {
         "type": "mssql",
-        "uid": "${DS_MSSQL}"
+        "uid": "sqlserver_ds"
       },
       "fieldConfig": {
         "defaults": {
@@ -136,7 +136,7 @@
           "dataset": "WEM",
           "datasource": {
             "type": "mssql",
-            "uid": "${DS_MSSQL}"
+            "uid": "sqlserver_ds"
           },
           "editorMode": "code",
           "format": "table",
@@ -168,7 +168,7 @@
     {
       "datasource": {
         "type": "mssql",
-        "uid": "${DS_MSSQL}"
+        "uid": "sqlserver_ds"
       },
       "fieldConfig": {
         "defaults": {
@@ -222,7 +222,7 @@
           "dataset": "WEM",
           "datasource": {
             "type": "mssql",
-            "uid": "${DS_MSSQL}"
+            "uid": "sqlserver_ds"
           },
           "editorMode": "code",
           "format": "table",
@@ -254,7 +254,7 @@
     {
       "datasource": {
         "type": "mssql",
-        "uid": "${DS_MSSQL}"
+        "uid": "sqlserver_ds"
       },
       "fieldConfig": {
         "defaults": {
@@ -308,7 +308,7 @@
           "dataset": "WEM",
           "datasource": {
             "type": "mssql",
-            "uid": "${DS_MSSQL}"
+            "uid": "sqlserver_ds"
           },
           "editorMode": "code",
           "format": "table",
@@ -340,7 +340,7 @@
     {
       "datasource": {
         "type": "mssql",
-        "uid": "${DS_MSSQL}"
+        "uid": "sqlserver_ds"
       },
       "fieldConfig": {
         "defaults": {
@@ -396,7 +396,7 @@
           "dataset": "WEM",
           "datasource": {
             "type": "mssql",
-            "uid": "${DS_MSSQL}"
+            "uid": "sqlserver_ds"
           },
           "editorMode": "code",
           "format": "table",
@@ -428,7 +428,7 @@
     {
       "datasource": {
         "type": "mssql",
-        "uid": "${DS_MSSQL}"
+        "uid": "sqlserver_ds"
       },
       "fieldConfig": {
         "defaults": {
@@ -509,7 +509,7 @@
           "dataset": "WEM",
           "datasource": {
             "type": "mssql",
-            "uid": "${DS_MSSQL}"
+            "uid": "sqlserver_ds"
           },
           "editorMode": "code",
           "format": "table",
@@ -541,7 +541,7 @@
     {
       "datasource": {
         "type": "mssql",
-        "uid": "${DS_MSSQL}"
+        "uid": "sqlserver_ds"
       },
       "fieldConfig": {
         "defaults": {
@@ -622,7 +622,7 @@
           "dataset": "WEM",
           "datasource": {
             "type": "mssql",
-            "uid": "${DS_MSSQL}"
+            "uid": "sqlserver_ds"
           },
           "editorMode": "code",
           "format": "table",
@@ -654,7 +654,7 @@
     {
       "datasource": {
         "type": "mssql",
-        "uid": "${DS_MSSQL}"
+        "uid": "sqlserver_ds"
       },
       "fieldConfig": {
         "defaults": {
@@ -710,7 +710,7 @@
           "dataset": "WEM",
           "datasource": {
             "type": "mssql",
-            "uid": "${DS_MSSQL}"
+            "uid": "sqlserver_ds"
           },
           "editorMode": "code",
           "format": "table",
@@ -742,7 +742,7 @@
     {
       "datasource": {
         "type": "mssql",
-        "uid": "${DS_MSSQL}"
+        "uid": "sqlserver_ds"
       },
       "fieldConfig": {
         "defaults": {
@@ -822,7 +822,7 @@
           "dataset": "WEM",
           "datasource": {
             "type": "mssql",
-            "uid": "${DS_MSSQL}"
+            "uid": "sqlserver_ds"
           },
           "editorMode": "code",
           "format": "table",
@@ -854,7 +854,7 @@
     {
       "datasource": {
         "type": "mssql",
-        "uid": "${DS_MSSQL}"
+        "uid": "sqlserver_ds"
       },
       "fieldConfig": {
         "defaults": {
@@ -910,7 +910,7 @@
           "dataset": "WEM",
           "datasource": {
             "type": "mssql",
-            "uid": "${DS_MSSQL}"
+            "uid": "sqlserver_ds"
           },
           "editorMode": "code",
           "format": "table",
@@ -942,7 +942,7 @@
     {
       "datasource": {
         "type": "mssql",
-        "uid": "${DS_MSSQL}"
+        "uid": "sqlserver_ds"
       },
       "fieldConfig": {
         "defaults": {
@@ -998,7 +998,7 @@
           "dataset": "WEM",
           "datasource": {
             "type": "mssql",
-            "uid": "${DS_MSSQL}"
+            "uid": "sqlserver_ds"
           },
           "editorMode": "code",
           "format": "table",
@@ -1030,7 +1030,7 @@
     {
       "datasource": {
         "type": "mssql",
-        "uid": "${DS_MSSQL}"
+        "uid": "sqlserver_ds"
       },
       "fieldConfig": {
         "defaults": {
@@ -1084,7 +1084,7 @@
           "dataset": "WEM",
           "datasource": {
             "type": "mssql",
-            "uid": "${DS_MSSQL}"
+            "uid": "sqlserver_ds"
           },
           "editorMode": "code",
           "format": "table",
@@ -1116,7 +1116,7 @@
     {
       "datasource": {
         "type": "mssql",
-        "uid": "${DS_MSSQL}"
+        "uid": "sqlserver_ds"
       },
       "fieldConfig": {
         "defaults": {
@@ -1169,7 +1169,7 @@
           "dataset": "WEM",
           "datasource": {
             "type": "mssql",
-            "uid": "${DS_MSSQL}"
+            "uid": "sqlserver_ds"
           },
           "editorMode": "code",
           "format": "table",
@@ -1201,7 +1201,7 @@
     {
       "datasource": {
         "type": "mssql",
-        "uid": "${DS_MSSQL}"
+        "uid": "sqlserver_ds"
       },
       "fieldConfig": {
         "defaults": {
@@ -1254,7 +1254,7 @@
           "dataset": "WEM",
           "datasource": {
             "type": "mssql",
-            "uid": "${DS_MSSQL}"
+            "uid": "sqlserver_ds"
           },
           "editorMode": "code",
           "format": "table",
