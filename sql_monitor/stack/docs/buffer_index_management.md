@@ -15,6 +15,10 @@ WHERE database_id > 4;
   * `Buffer Pool Total MB` → Total buffer pool memory allocated.
   * `Dirty Buffer Used MB` → Redundant with dirty buffer, useful for alerting.
 * **Use case:** Identify **memory pressure** and potential I/O bottlenecks.
+  * High dirty pages → heavy write activity.
+  * Helps identify I/O flush bottlenecks.
+  * See how much buffer pool memory is used by user databases.
+  * Helps decide if more memory is needed for SQL Server.
 
 ### System Memory Status
 ```sql
@@ -34,6 +38,9 @@ FROM sys.dm_os_sys_memory;
   * `Available Page File MB` → Free virtual memory.
   * `System Memory State Description` → Overall memory pressure indicator.
 * **Use case:** Detect **low memory conditions** and prevent **slowdowns or memory throttling**.
+  * Ensure enough free RAM is available for SQL Server buffer pool, queries, and tempdb.
+  * Low Available Physical Memory or Available Page File → high memory usage by SQL Server or other processes.
+  * Compare Total Physical Memory vs. SQL Server memory allocation to check if the server has enough memory for expected workload.
 
 ### Index Usage Statistics
 ```sql
@@ -56,6 +63,10 @@ ORDER BY s.user_seeks DESC;
   * `user_lookups` → Lookups using included columns.
   * `user_updates` → Updates applied to index.
 * **Use case:** Detect **unused indexes** (low `user_seeks`) or **heavily updated indexes**, informing **index maintenance strategy**.
+  * Indexes with user_seeks = 0, user_scans = 0, and low user_lookups may not be needed.
+  * High user_seeks → frequently queried, critical for query performance.
+  * High user_updates → index maintenance may affect insert/update/delete performance.
+  * Decide which indexes to keep, remove, or consolidate. Helps optimize storage, reduce fragmentation, and improve query performance.
 
 ### Page Life Expectancy (PLE)
 ```sql

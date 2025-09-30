@@ -32,6 +32,11 @@ WHERE objtype = 'Adhoc'
 * **Metric:**
   * `Cache_Hit_Ratio` → Percentage of cached plans that are reused.
 * **Use case:** Identify potential **query plan churn**; low hit ratio → consider parameterizing queries.
+  * **High ratio (90–100%)** → SQL Server is reusing plans efficiently, low plan churn.
+  * **Low ratio (<50%)** → Many plans are cached but not reused, which may indicate:
+    * Excessive ad-hoc queries
+    * Lack of parameterization
+    * Plan cache bloat
 
 ### Wait Statistics
 ```sql
@@ -43,7 +48,8 @@ DBCC SQLPERF (WAITSTATS);
 
 ### Active Connections Count
 ```sql
-SELECT COUNT(session_id) AS Connections
+SELECT 
+  COUNT(session_id) AS Connections
 FROM sys.dm_exec_sessions
 WHERE is_user_process = 1;
 ```
@@ -54,10 +60,12 @@ WHERE is_user_process = 1;
 
 ### Low-Use Cache Plans
 ```sql
-SELECT cacheobjtype AS CacheObjectType,
-       objtype AS ObjectType,
-       usecounts AS 'Use Count',
-       size_in_bytes AS 'Cache Size'
+SELECT 
+	plan_handle,
+	cacheobjtype AS CacheObjectType,
+    objtype AS ObjectType,
+    usecounts AS 'Use Count',
+    size_in_bytes AS 'Cache Size'
 FROM sys.dm_exec_cached_plans
 WHERE usecounts < 10;
 ```
@@ -66,7 +74,9 @@ WHERE usecounts < 10;
   * `CacheObjectType`, `ObjectType` → Type of cache object.
   * `Use Count` → Number of times plan was executed.
   * `Cache Size` → Memory consumed.
-* **Use case:** Detect **plan cache pollution**, which can reduce efficiency.
+* **Use case:** Detect **plan cache pollution**, which can reduce efficiency and identify low-use cached plans that may be occupying memory but not being reused.
+  * These plans contribute to plan cache pollution, where memory is taken up by unnecessary or one-off ad-hoc plans.
+  * To clean a low-use, run:: `DBCC FREEPROCCACHE (0x0...);`
 
 ### Top 10 Queries by Logical Reads
 ```sql

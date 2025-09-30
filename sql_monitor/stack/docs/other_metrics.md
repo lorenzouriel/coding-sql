@@ -1,6 +1,4 @@
-# Database – Queries
-
-### 2.1 Database Availability
+### Database Availability
 ```sql
 SELECT 
     d.name AS [Database],
@@ -22,7 +20,7 @@ CROSS APPLY (
 **Benefits:** Provides a **quick health indicator** for all databases; helps identify **unexpected restarts or downtime**.
 *Note:* For precise SLA tracking, use **SQL Server Agent monitoring** or external tools like **SCOM/Zabbix**.
 
-### 2.2 Database Connections
+### Database Connections
 ```sql
 SELECT 
     DB_NAME(dbid) AS [Database],
@@ -37,7 +35,7 @@ GROUP BY dbid;
 **Use Case:** Detect **connection spikes, potential blocking, or over-utilization**.
 **Benefits:** Helps **capacity planning**, **load analysis**, and **detecting abandoned sessions** that may impact performance.
 
-### 2.3 Query Performance – Average Execution Time
+### Query Performance – Average Execution Time
 ```sql
 SELECT TOP 10
     DB_NAME(st.dbid) AS [Database],
@@ -58,7 +56,7 @@ ORDER BY [Avg_Elapsed_Time_ms] DESC;
 **Use Case:** Detect **long-running queries** that may be impacting performance.
 **Benefits:** Enables **query optimization**, **index tuning**, and **CPU resource management**.
 
-### 2.4 Slow Query Alerts (> 30s)
+### Slow Query Alerts (> 30s)
 ```sql
 SELECT 
     DB_NAME(st.dbid) AS [Database],
@@ -78,7 +76,7 @@ ORDER BY qs.max_elapsed_time DESC;
 **Use Case:** Alert DBA team to **potential performance issues or blocking queries**.
 **Benefits:** Improves **response time**, reduces **user impact**, and guides **query tuning efforts**.
 
-### 2.5 Last Backup Taken
+### Last Backup Taken
 ```sql
 SELECT 
     d.name AS [Database],
@@ -93,7 +91,7 @@ ORDER BY [LastBackup] DESC;
 **Use Case:** Verify **backup compliance** with RTO/RPO requirements.
 **Benefits:** Reduces **risk of data loss** and ensures **recovery readiness**.
 
-### 2.6 Backup Type (FULL, DIFFERENTIAL, LOG)
+### Backup Type (FULL, DIFFERENTIAL, LOG)
 ```sql
 SELECT 
     d.name AS [Database],

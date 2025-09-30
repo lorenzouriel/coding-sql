@@ -18,13 +18,16 @@ ORDER BY total_elapsed_time DESC;
 
 ### Currently Running Threads
 ```sql
-SELECT COUNT(*) AS Running_Threads
+SELECT 
+  COUNT(*) AS Running_Threads
 FROM sys.dm_exec_requests
 WHERE status = 'running';
 ```
 * **Purpose:** Count active threads currently executing queries.
 * **Metric:** `Running_Threads` → Number of concurrent executing requests.
 * **Use case:** Monitor **concurrent activity**, detect **thread storms** or query blocking.
+  * High number of running threads may indicate CPU pressure or inefficient queries.
+  * Helps see how many queries are concurrently executing.
 
 ### Pending I/O Requests
 ```sql
@@ -35,6 +38,8 @@ FROM sys.dm_io_pending_io_requests;
 * **Purpose:** Identify **I/O operations waiting to complete**.
 * **Metric:** `OpenFiles` → Number of pending I/O requests.
 * **Use case:** Detect potential **disk bottlenecks** affecting performance.
+  * Pending I/O indicates how many disk operations are waiting, which may reflect slow storage, high concurrency, or large queries.
+  * A high number of pending I/O requests can point to disk performance issues, I/O saturation, or queries scanning large amounts of data.
 
 ### Active Locks
 ```sql
@@ -54,6 +59,9 @@ FROM sys.dm_tran_locks;
   * `LockType` → Lock mode (e.g., `X`, `S`).
   * `Status` → Granted or waiting.
 * **Use case:** Troubleshoot **blocking, deadlocks, or contention**.
+  * Check which sessions are waiting on locks (Status = 'WAIT').
+  * Identify conflicting locks and involved sessions.
+  * Detect hot spots in tables or indexes where locks are heavily requested.
 
 ### Session Space Usage
 ```sql
@@ -67,13 +75,17 @@ FROM sys.dm_db_session_space_usage;
   * `User Object Pages` → Pages used by user objects (tables, indexes).
   * `Internal Object Pages` → Pages used by internal SQL Server structures.
 * **Use case:** Detect **memory pressure** caused by session activity.
+  * Track how much session memory is allocated for user and internal objects.
+  * High internal_objects_alloc_page_count → may indicate large sorts, joins, or hash operations consuming tempdb memory.
+  * Can identify queries that generate heavy tempdb usage via internal objects.
 
 ### Active Transactions
 ```sql
-SELECT transaction_id AS TransactionID,
-       transaction_begin_time AS BeginTime,
-       transaction_state AS State,
-       transaction_type AS Type
+SELECT 
+	  transaction_id AS TransactionID,
+    transaction_begin_time AS BeginTime,
+    transaction_state AS State,
+    transaction_type AS Type
 FROM sys.dm_tran_active_transactions;
 ```
 * **Purpose:** Track **transactions currently open** in SQL Server.
@@ -83,12 +95,16 @@ FROM sys.dm_tran_active_transactions;
   * `State` → Active, committing, or rolling back.
   * `Type` → Transaction type (read/write).
 * **Use case:** Detect **long-running or uncommitted transactions**.
+  * Spot transactions that have been open for too long.
+  * Long-running transactions can hold locks and block other queries.
+  * Open transactions prevent log truncation, potentially causing log growth.
 
 ### Wait Statistics (excluding idle waits)
 ```sql
-SELECT wait_type, 
-       SUM(wait_time_ms) AS WaitTimeMS, 
-       SUM(waiting_tasks_count) AS TaskCount
+SELECT 
+	   wait_type, 
+     SUM(wait_time_ms) AS WaitTimeMS, 
+     SUM(waiting_tasks_count) AS TaskCount
 FROM sys.dm_os_wait_stats
 WHERE wait_type NOT IN ('SLEEP_TASK', 'BROKER_TASK_STOP', 'SQLTRACE_BUFFER_FLUSH')
 GROUP BY wait_type
@@ -100,3 +116,7 @@ ORDER BY WaitTimeMS DESC;
   * `TaskCount` → Number of waiting tasks.
   * `wait_type` → Type of wait (e.g., `PAGEIOLATCH_SH`, `LCK_M_X`).
 * **Use case:** Troubleshoot **performance bottlenecks** caused by I/O, locks, or memory.
+  * Example: PAGEIOLATCH_SH → waiting on data pages from disk.
+  * Example: LCK_M_X → waiting for exclusive locks.
+  * Example: SOS_SCHEDULER_YIELD → waiting for CPU.
+  * High wait time → investigate queries, indexes, or hardware.
