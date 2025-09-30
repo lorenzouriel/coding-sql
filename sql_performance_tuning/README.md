@@ -11,17 +11,16 @@ The idea here is: *before changing anything, measure everything*.
    * `03_DB_Files_And_Autogrowth` → check database file sizes and autogrowth (should be fixed MB, not %).
    * `04_Top_Waits` → capture waits (what SQL Server is waiting on).
    * `05_IO_Latency_by_File` → check disk performance by file.
-2. Collect PerfMon counters for at least 24h (see **PerfMon\_Counters** tab).
+2. Collect PerfMon counters for at least 24h (see **PerfMon_Counters** tab).
 
 *Why?* This becomes your “before” picture. Without it, you can’t prove improvements.
 
 ## **Step 2 – Workload Analysis**
 This is where you find **the worst queries**:
-
 * Run `06_Top_Queries_By_CPU` and `07_Top_Queries_By_Reads`.
 * Look at missing indexes (`08_Missing_Indexes`) but don’t just apply blindly—validate they’re not duplicates.
 * Check index usage (`09_Index_Usage`) to find unused but costly indexes.
-* Measure fragmentation (`10_Index_Fragmentation`) and apply the policy in **Index\_Maintenance** tab.
+* Measure fragmentation (`10_Index_Fragmentation`) and apply the policy in **Index_Maintenance** tab.
 
 *Goal:* Reduce query cost with indexing, stats, and query tuning.
 
@@ -43,7 +42,7 @@ Run `16_Tempdb_Contention_Check`.
 ## **Step 6 – CPU**
 * High `SOS_SCHEDULER_YIELD` waits or sustained CPU > 80%?
   * Tune the top CPU queries.
-  * Adjust **MAXDOP** and **Cost Threshold for Parallelism** (see **Config\_Review** tab).
+  * Adjust **MAXDOP** and **Cost Threshold for Parallelism** (see **Config_Review** tab).
 
 ## **Step 7 – IO / Log**
 * High `PAGEIOLATCH` → slow reads (need indexes or faster storage).
@@ -51,13 +50,11 @@ Run `16_Tempdb_Contention_Check`.
 
 ## **Step 8 – Config Review**
 Quarterly, review settings against best practices:
-
 * MAXDOP, cost threshold, memory, ad-hoc optimization, tempdb files, etc.
 
 ## **Step 9 – Verify**
 * Rerun all baseline steps after changes.
 * Compare before vs after in **Baseline_Log**.
-
 *Rule*: **One change at a time, measure before & after.**
 
 So, that’s the structured journey:
